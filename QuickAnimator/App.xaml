@@ -1,0 +1,35 @@
+﻿<Application
+    x:Class="QuickAnimator.App"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:QuickAnimator">
+
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Common/StandardStyles.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+            
+            <Style x:Key="EditAppBarButtonStyle" TargetType="Button" BasedOn="{StaticResource AppBarButtonStyle}">
+                <Setter Property="AutomationProperties.AutomationId" Value="EditAppBarButton"/>
+                <Setter Property="AutomationProperties.Name" Value="Edit"/>
+                <Setter Property="Content" Value="&#xE104;"/>
+            </Style>
+            <Style x:Key="TrimAppBarButtonStyle" TargetType="Button" BasedOn="{StaticResource AppBarButtonStyle}">
+                <Setter Property="AutomationProperties.AutomationId" Value="TrimAppBarButton"/>
+                <Setter Property="AutomationProperties.Name" Value="Trim"/>
+                <Setter Property="Content" Value="&#x23E5;"/>
+            </Style>
+            <Style x:Key="SelectAllAppBarButtonStyle" TargetType="Button" BasedOn="{StaticResource AppBarButtonStyle}">
+                <Setter Property="AutomationProperties.AutomationId" Value="SelectAllAppBarButton"/>
+                <Setter Property="AutomationProperties.Name" Value="Select All"/>
+                <Setter Property="Content" Value="&#x2B1A;"/>
+            </Style>
+            <Style x:Key="ClearAllAppBarButtonStyle" TargetType="Button" BasedOn="{StaticResource AppBarButtonStyle}">
+                <Setter Property="AutomationProperties.AutomationId" Value="SelectAllAppBarButton"/>
+                <Setter Property="AutomationProperties.Name" Value="Select All"/>
+                <Setter Property="Content" Value="&#xE160;"/>
+            </Style>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

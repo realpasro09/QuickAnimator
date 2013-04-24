@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Machine>PC_ENT01</Machine>
+    <WindowsUser>Rene Rosa</WindowsUser>
+    <SolutionConfiguration>Debug|AnyCPU</SolutionConfiguration>
+    <PackageArchitecture>neutral</PackageArchitecture>
+    <RegisteredManifestChecksum>6EF61723DEA771F3F6012DB680BAC89EE8F16384FE20CEBF9C7CAF7A622EEDA8</RegisteredManifestChecksum>
+    <RegisteredPackageMoniker>f29f2928-896c-4cc6-a849-0d03473dd127_1.0.0.0_neutral__8xc3vndtbs3yr</RegisteredPackageMoniker>
+    <RegisteredUserModeAppID>f29f2928-896c-4cc6-a849-0d03473dd127_8xc3vndtbs3yr!App</RegisteredUserModeAppID>
+    <RegisteredPackageID>f29f2928-896c-4cc6-a849-0d03473dd127</RegisteredPackageID>
+    <RegisteredPackagePublisher>CN=Rene Rosa</RegisteredPackagePublisher>
+    <RegisteredVersion>1.0.0.0</RegisteredVersion>
+  </PropertyGroup>
+  <ItemGroup>
+    <AppXManifest Include="C:\Users\Rene\Desktop\University\APS\QuickAnimator\QuickAnimator\bin\Debug\AppxManifest.xml">
+      <PackagePath>AppxManifest.xml</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2013-04-18T22:47:06.365</Modified>
+    </AppXManifest>
+  </ItemGroup>
+  <ItemGroup>
+    <AppxPackagedFile Include="C:\Users\Rene\Desktop\University\APS\QuickAnimator\QuickAnimator\bin\Debug\QuickAnimator.exe">
+      <PackagePath>QuickAnimator.exe</PackagePath>
+      <Modified>2013-04-18T22:55:52.151</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Rene\Desktop\University\APS\QuickAnimator\QuickAnimator\bin\Debug\QuickAnimator.pdb">
+      <PackagePath>QuickAnimator.pdb</PackagePath>
+      <Modified>2013-04-18T22:55:52.124</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Rene\Desktop\University\APS\QuickAnimator\QuickAnimator\Assets\Logo.png">
+      <PackagePath>Assets\Logo.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2012-03-16T02:42:52.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Rene\Desktop\University\APS\QuickAnimator\QuickAnimator\Assets\SmallLogo.png">
+      <PackagePath>Assets\SmallLogo.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2012-03-16T02:42:52.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Rene\Desktop\University\APS\QuickAnimator\QuickAnimator\Assets\SplashScreen.png">
+      <PackagePath>Assets\SplashScreen.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2012-03-16T02:42:52.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Rene\Desktop\University\APS\QuickAnimator\QuickAnimator\Assets\StoreLogo.png">
+      <PackagePath>Assets\StoreLogo.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2012-03-16T02:42:52.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Rene\Desktop\University\APS\QuickAnimator\QuickAnimator\Assets\ToolboxIcons\cancel-48.png">
+      <PackagePath>Assets\ToolboxIcons\cancel-48.png</PackagePath>
+      <Modified>2013-04-17T17:04:12.039</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Rene\Desktop\University\APS\QuickAnimator\QuickAnimator\Assets\ToolboxIcons\edit-48.png">
+      <PackagePath>Assets\ToolboxIcons\edit-48.png</PackagePath>
+      <Modified>2013-04-17T16:42:56.367</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Rene\Desktop\University\APS\QuickAnimator\QuickAnimator\bin\Debug\App.xaml">
+      <PackagePath>App.xaml</PackagePath>
+      <Modified>2013-04-18T04:11:49.383</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Rene\Desktop\University\APS\QuickAnimator\QuickAnimator\bin\Debug\Common\StandardStyles.xaml">
+      <PackagePath>Common\StandardStyles.xaml</PackagePath>
+      <Modified>2012-06-26T22:19:20.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Rene\Desktop\University\APS\QuickAnimator\QuickAnimator\bin\Debug\MainPage.xaml">
+      <PackagePath>MainPage.xaml</PackagePath>
+      <Modified>2013-04-18T22:51:19.929</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Rene\Desktop\University\APS\QuickAnimator\QuickAnimator\bin\Debug\resources.pri">
+      <PackagePath>resources.pri</PackagePath>
+      <Modified>2013-04-18T22:47:06.288</Modified>
+    </AppxPackagedFile>
+  </ItemGroup>
+  <ItemGroup>
+  </ItemGroup>
+</Project>
