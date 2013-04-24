@@ -1,7 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.IO;
 using System.Linq;
+using System.Runtime.CompilerServices;
+using QuickAnimator.Annotations;
 using Windows.Devices.Input;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
@@ -56,6 +59,7 @@ namespace QuickAnimator
                 return m_HighLightManager;
             }
         }
+
         public MainPage()
         {
             this.InitializeComponent();
@@ -825,6 +829,20 @@ namespace QuickAnimator
                     break;
             }
         }
+
+        private void NewProject(object sender, RoutedEventArgs e)
+        {
+            New.Visibility = Visibility.Collapsed;
+            Lapiz.Visibility = Visibility.Visible;
+            Borrador.Visibility = Visibility.Visible;
+            Seleccion.Visibility = Visibility.Visible;
+            BorrarTodo.Visibility = Visibility.Visible;
+            logo.Visibility = Visibility.Collapsed;
+            InkCanvas.Visibility = Visibility.Visible;
+            image.Visibility = Visibility.Visible;
+            BottomToolbar.Visibility = Visibility.Visible;
+        }
+
 
     }
 }

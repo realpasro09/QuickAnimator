@@ -1,1 +1,1 @@
-C:\Users\Rene\Desktop\University\APS\QuickAnimator\QuickAnimator\QuickAnimator.csproj;neutral
+C:\Users\Rene\QuickAnimator\QuickAnimator\QuickAnimator.csproj;neutral

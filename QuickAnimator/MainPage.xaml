@@ -5,30 +5,40 @@
     xmlns:local="using:QuickAnimator"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d">
+    mc:Ignorable="d" d:DataContext="{d:DesignData }">
 
-    <Grid Background="{StaticResource ApplicationPageBackgroundThemeBrush}">
-        <Canvas Name="InkCanvas" Background="White" Margin="0,0,0,0" PointerMoved="InkCanvas_OnPointerMoved" />
-        <Image Name="image" HorizontalAlignment="Left" Height="230.5" Margin="1080,214.5,0,0" VerticalAlignment="Top" Width="261"/>
-        <TextBlock HorizontalAlignment="Left" Margin="1111.5,163,0,0" TextWrapping="Wrap" Text="Clipboard Image" VerticalAlignment="Top" Height="33" Width="210" FontSize="24"/>
+    <Grid Background="{StaticResource AppBarBackgroundThemeBrush}">
+        <Image Name="logo" HorizontalAlignment="Center" Source="Assets/QuickAnimatorInit.jpg" Width="1500"  VerticalAlignment="Center" Visibility="Visible"/>
+        <Canvas Name="InkCanvas" Background="White" Margin="0,0,0,0" PointerMoved="InkCanvas_OnPointerMoved" Visibility="Collapsed"/>
+        <Image Name="image" HorizontalAlignment="Left" Height="230.5" Margin="1080,214.5,0,0" VerticalAlignment="Top" Width="261" Visibility="Collapsed"/>
+        <TextBlock HorizontalAlignment="Left" Margin="1111.5,163,0,0" TextWrapping="Wrap" Text="Clipboard Image" VerticalAlignment="Top" Height="33" Width="210" FontSize="24" Visibility="Collapsed"/>
     </Grid>
     <Page.TopAppBar>
-        <AppBar x:Name="toolbox" Padding="10,0,10,0" PointerMoved="Toolbox_OnPointerMoved">
+        <AppBar x:Name="Toolbox" Padding="10,0,10,0" PointerMoved="Toolbox_OnPointerMoved">
             <Grid>
                 <StackPanel Orientation="Horizontal"
                             HorizontalAlignment="Left">
+                    <Button x:Name="New" AutomationProperties.Name="Nueva Animación" Grid.Column="1" Margin="10"
+                            Click="NewProject"
+                            Visibility="Visible"
+                            Style="{StaticResource NewAppBarButtonStyle}" RenderTransformOrigin="0.5,0.5">
+                    </Button>
                     <Button x:Name="Lapiz" AutomationProperties.Name="Dibujar" Grid.Column="1" Margin="10"
                             Click="SelectSize"
+                            Visibility="Collapsed"
                             Style="{StaticResource EditAppBarButtonStyle}" RenderTransformOrigin="0.5,0.5">                 
                     </Button>
                     <Button x:Name="Borrador" AutomationProperties.Name="Borrar" Grid.Column="2" Margin="10" 
                             Click="SelectEraserSize"
+                            Visibility="Collapsed"
                             Style="{StaticResource TrimAppBarButtonStyle}"/>
-                    <Button x:Name="ModeSelect" AutomationProperties.Name="Select" Grid.Column="3" Margin ="10"
+                    <Button x:Name="Seleccion" AutomationProperties.Name="Select" Grid.Column="3" Margin ="10"
                             Click="Select"
+                            Visibility="Collapsed"
                             Style="{StaticResource SelectAllAppBarButtonStyle}"/>
-                    <Button x:Name="ClearAll" AutomationProperties.Name="Limpiar" Grid.Column="3" Margin ="10"
+                    <Button x:Name="BorrarTodo" AutomationProperties.Name="Limpiar" Grid.Column="3" Margin ="10"
                             Click="Clear"
+                            Visibility="Collapsed"
                             Style="{StaticResource ClearAllAppBarButtonStyle}"/>
                     
                 </StackPanel>
@@ -36,7 +46,7 @@
         </AppBar>
     </Page.TopAppBar>
     <Page.BottomAppBar>
-        <AppBar Visibility="Visible">
+        <AppBar x:Name="BottomToolbar" Visibility="Collapsed">
             <Grid>
                 <StackPanel Orientation="Horizontal">
                     <Button x:Name="Frame1" AutomationProperties.Name="Dibujar" Grid.Column="1" Margin="10"
