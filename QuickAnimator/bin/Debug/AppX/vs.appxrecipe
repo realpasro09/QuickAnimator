@@ -16,17 +16,17 @@
     <AppXManifest Include="C:\Users\Rene\QuickAnimator\QuickAnimator\bin\Debug\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2013-04-24T05:12:40.684</Modified>
+      <Modified>2013-04-27T04:12:48.925</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="C:\Users\Rene\QuickAnimator\QuickAnimator\bin\Debug\QuickAnimator.exe">
       <PackagePath>QuickAnimator.exe</PackagePath>
-      <Modified>2013-04-24T05:44:53.491</Modified>
+      <Modified>2013-04-27T04:33:47.750</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Rene\QuickAnimator\QuickAnimator\bin\Debug\QuickAnimator.pdb">
       <PackagePath>QuickAnimator.pdb</PackagePath>
-      <Modified>2013-04-24T05:44:53.463</Modified>
+      <Modified>2013-04-27T04:33:47.736</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Rene\QuickAnimator\QuickAnimator\Assets\Logo.png">
       <PackagePath>Assets\Logo.png</PackagePath>
@@ -58,11 +58,11 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Rene\QuickAnimator\QuickAnimator\Assets\QuickAnimatorInit.jpg">
       <PackagePath>Assets\QuickAnimatorInit.jpg</PackagePath>
-      <Modified>2013-04-24T01:04:31.357</Modified>
+      <Modified>2013-04-26T03:26:48.872</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Rene\QuickAnimator\QuickAnimator\bin\Debug\App.xaml">
       <PackagePath>App.xaml</PackagePath>
-      <Modified>2013-04-24T04:40:53.394</Modified>
+      <Modified>2013-04-26T03:51:03.033</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Rene\QuickAnimator\QuickAnimator\bin\Debug\Common\StandardStyles.xaml">
       <PackagePath>Common\StandardStyles.xaml</PackagePath>
@@ -70,11 +70,11 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Rene\QuickAnimator\QuickAnimator\bin\Debug\MainPage.xaml">
       <PackagePath>MainPage.xaml</PackagePath>
-      <Modified>2013-04-24T05:44:48.443</Modified>
+      <Modified>2013-04-26T21:33:59.655</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Rene\QuickAnimator\QuickAnimator\bin\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>
-      <Modified>2013-04-24T01:07:15.486</Modified>
+      <Modified>2013-04-26T23:42:55.237</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>

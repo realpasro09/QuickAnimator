@@ -140,6 +140,7 @@ namespace QuickAnimator.QuickAnimator_XamlTypeInfo
                 userType = new global::QuickAnimator.QuickAnimator_XamlTypeInfo.XamlUserType(this, typeName, typeof(global::QuickAnimator.MainPage), GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
                 userType.Activator = Activate_0_MainPage;
                 userType.AddMemberName("CurrentManager");
+                userType.AddMemberName("CurrentManagerFrame");
                 xamlType = userType;
                 break;
 
@@ -159,6 +160,21 @@ namespace QuickAnimator.QuickAnimator_XamlTypeInfo
             var that = (global::QuickAnimator.MainPage)instance;
             return that.CurrentManager;
         }
+        private void set_0_MainPage_CurrentManager(object instance, object Value)
+        {
+            var that = (global::QuickAnimator.MainPage)instance;
+            that.CurrentManager = (global::Windows.UI.Input.Inking.InkManager)Value;
+        }
+        private object get_1_MainPage_CurrentManagerFrame(object instance)
+        {
+            var that = (global::QuickAnimator.MainPage)instance;
+            return that.CurrentManagerFrame;
+        }
+        private void set_1_MainPage_CurrentManagerFrame(object instance, object Value)
+        {
+            var that = (global::QuickAnimator.MainPage)instance;
+            that.CurrentManagerFrame = (global::Windows.UI.Input.Inking.InkManager)Value;
+        }
 
         private global::Windows.UI.Xaml.Markup.IXamlMember CreateXamlMember(string longMemberName)
         {
@@ -171,7 +187,13 @@ namespace QuickAnimator.QuickAnimator_XamlTypeInfo
                 userType = (global::QuickAnimator.QuickAnimator_XamlTypeInfo.XamlUserType)GetXamlTypeByName("QuickAnimator.MainPage");
                 xamlMember = new global::QuickAnimator.QuickAnimator_XamlTypeInfo.XamlMember(this, "CurrentManager", "Windows.UI.Input.Inking.InkManager");
                 xamlMember.Getter = get_0_MainPage_CurrentManager;
-                xamlMember.SetIsReadOnly();
+                xamlMember.Setter = set_0_MainPage_CurrentManager;
+                break;
+            case "QuickAnimator.MainPage.CurrentManagerFrame":
+                userType = (global::QuickAnimator.QuickAnimator_XamlTypeInfo.XamlUserType)GetXamlTypeByName("QuickAnimator.MainPage");
+                xamlMember = new global::QuickAnimator.QuickAnimator_XamlTypeInfo.XamlMember(this, "CurrentManagerFrame", "Windows.UI.Input.Inking.InkManager");
+                xamlMember.Getter = get_1_MainPage_CurrentManagerFrame;
+                xamlMember.Setter = set_1_MainPage_CurrentManagerFrame;
                 break;
             }
             return xamlMember;
