@@ -14,7 +14,8 @@
         <TextBlock HorizontalAlignment="Left" Margin="1111.5,163,0,0" TextWrapping="Wrap" Text="Clipboard Image" VerticalAlignment="Top" Height="33" Width="210" FontSize="24" Visibility="Collapsed"/>
     </Grid>
     <Page.TopAppBar>
-        <AppBar x:ConnectionId='2' x:Name="Toolbox" Padding="10,0,10,0"                                      >
+        <AppBar x:ConnectionId='2' x:Name="Toolbox" Padding="10,0,10,0"                                      
+                Visibility="Visible">
             <Grid>
                 <StackPanel Orientation="Horizontal"
                             HorizontalAlignment="Left">
@@ -53,13 +54,15 @@
             <Grid >
                 <Grid.ColumnDefinitions>
 
-                    <ColumnDefinition Width="auto"/>
-                    <ColumnDefinition Width="360*"/>
+                    <ColumnDefinition Width="9*"/>
+                    <ColumnDefinition Width="1*"/>
 
                 </Grid.ColumnDefinitions>
+                <ScrollViewer x:Name="scroll1" VerticalScrollBarVisibility="Disabled" HorizontalScrollBarVisibility="Visible">
                 <StackPanel Orientation="Horizontal" Grid.Column="0" x:Name="FramesContainer">
                     
                 </StackPanel>
+                </ScrollViewer>
                 <StackPanel Orientation="Horizontal" Grid.Column="1">
                     <Button x:ConnectionId='9' x:Name="NuevoFrame" Grid.Column="1" Margin="0,50,10,30"
                                                     

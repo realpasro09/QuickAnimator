@@ -1,13 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.IO;
 using System.Linq;
-using System.Runtime.CompilerServices;
-using QuickAnimator.Annotations;
 using Windows.Devices.Input;
 using Windows.Foundation;
-using Windows.Foundation.Collections;
 using Windows.Storage;
 using Windows.Storage.Streams;
 using Windows.UI;
@@ -17,12 +12,9 @@ using Windows.UI.Input.Inking;
 using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Media.Imaging;
-using Windows.UI.Xaml.Navigation;
 using Windows.UI.Xaml.Shapes;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
@@ -90,6 +82,16 @@ namespace QuickAnimator
             };
 
             _mCurrentCanvasFrame = newCanvas;
+            var idframe = new TextBox
+            {
+                Text = _frames.ToString(),
+                MaxWidth = 2,
+                FontSize = 40,
+                Foreground = new SolidColorBrush(Colors.Black),
+                IsReadOnly = true
+            };
+
+            newCanvas.Children.Add(idframe);
             FramesContainer.Children.Add(_mCurrentCanvasFrame);
             
  
@@ -107,6 +109,10 @@ namespace QuickAnimator
 
         public void OnCanvasPointerReleased(object sender, PointerRoutedEventArgs e)
         {
+            if (m_InkManager.GetStrokes().Count > 0)
+            {
+                RenderStrokesFrame(CurrentManager, _mCurrentCanvasFrame);
+            }
             //OnCanvasPointerReleasedFrame(sender, e);
             if (e.Pointer.PointerId == m_PenId)
             {
@@ -212,7 +218,8 @@ namespace QuickAnimator
 
         public void OnCanvasPointerPressed(object sender, PointerRoutedEventArgs e)
         {
-           // OnCanvasPointerPressedFrame(sender, e);
+
+            // OnCanvasPointerPressedFrame(sender, e);
             // Get information about the pointer location. 
             PointerPoint pt = e.GetCurrentPoint(InkCanvas);
             _previousContactPt = pt.Position;
@@ -238,143 +245,6 @@ namespace QuickAnimator
 
                 m_PenId = pt.PointerId;
                 
-                e.Handled = true;
-            }
-
-            else if (pointerDevType == PointerDeviceType.Touch)
-            {
-                // Process touch input 
-            }
-        }
-
-        #endregion 
-
-        #region Pointer Event Handlers Frame
-
-
-        public void OnCanvasPointerReleasedFrame(object sender, PointerRoutedEventArgs e)
-        {
-            if (e.Pointer.PointerId == m_PenId)
-            {
-                PointerPoint pt = e.GetCurrentPoint(InkCanvas);
-
-                if (m_CurrentMode == "Erase")
-                {
-                    System.Diagnostics.Debug.WriteLine("Erasing : Pointer Released");
-
-                    m_InkManagerFrame.ProcessPointerUp(pt);
-                    m_HighLightManager.ProcessPointerUp(pt);
-                }
-                else
-                {
-                    // Pass the pointer information to the InkManager. 
-                    CurrentManagerFrame.ProcessPointerUp(pt);
-                }
-            }
-            else if (e.Pointer.PointerId == _touchID)
-            {
-                // Process touch input 
-            }
-
-            _touchID = 0;
-            m_PenId = 0;
-
-            // Call an application-defined function to render the ink strokes. 
-
-            RefreshCanvasFrame();
-
-            e.Handled = true;
-        }
-
-        private void OnCanvasPointerMovedFrame(object sender, PointerRoutedEventArgs e)
-        {
-            if (e.Pointer.PointerId == m_PenId)
-            {
-                PointerPoint pt = e.GetCurrentPoint(InkCanvas);
-
-                // Render a red line on the canvas as the pointer moves.  
-                // Distance() is an application-defined function that tests 
-                // whether the pointer has moved far enough to justify  
-                // drawing a new line. 
-                currentContactPt = pt.Position;
-                x1 = _previousContactPt.X;
-                y1 = _previousContactPt.Y;
-                x2 = currentContactPt.X;
-                y2 = currentContactPt.Y;
-
-                var color = m_CurrentMode == "Ink" ? m_CurrentDrawingColor : m_CurrentHighlightColor;
-                var size = m_CurrentMode == "Ink" ? m_CurrentDrawingSize : m_CurrentHighlightSize;
-
-                if (Distance(x1, y1, x2, y2) > 2.0 && m_CurrentMode != "Erase")
-                {
-                    Line line = new Line()
-                    {
-                        X1 = x1,
-                        Y1 = y1,
-                        X2 = x2,
-                        Y2 = y2,
-                        StrokeThickness = size,
-                        Stroke = new SolidColorBrush(color)
-                    };
-
-
-                    if (m_CurrentMode == "Highlight") line.Opacity = 0.4;
-                    _previousContactPt = currentContactPt;
-
-                    // Draw the line on the canvas by adding the Line object as 
-                    // a child of the Canvas object. 
-                    _mCurrentCanvasFrame.Children.Add(line);
-                }
-
-                if (m_CurrentMode == "Erase")
-                {
-                    System.Diagnostics.Debug.WriteLine("Erasing : Pointer Update");
-
-                    m_InkManagerFrame.ProcessPointerUpdate(pt);
-                    m_HighLightManager.ProcessPointerUpdate(pt);
-                }
-                else
-                {
-                    // Pass the pointer information to the InkManager. 
-                    CurrentManagerFrame.ProcessPointerUpdate(pt);
-                }
-            }
-
-            else if (e.Pointer.PointerId == _touchID)
-            {
-                // Process touch input 
-            }
-
-
-        }
-
-        public void OnCanvasPointerPressedFrame(object sender, PointerRoutedEventArgs e)
-        {
-            // Get information about the pointer location. 
-            PointerPoint pt = e.GetCurrentPoint(InkCanvas);
-            _previousContactPt = pt.Position;
-
-            // Accept input only from a pen or mouse with the left button pressed.  
-            PointerDeviceType pointerDevType = e.Pointer.PointerDeviceType;
-            if (pointerDevType == PointerDeviceType.Pen ||
-                    pointerDevType == PointerDeviceType.Mouse &&
-                    pt.Properties.IsLeftButtonPressed)
-            {
-                if (m_CurrentMode == "Erase")
-                {
-                    System.Diagnostics.Debug.WriteLine("Erasing : Pointer Pressed");
-
-                    m_InkManagerFrame.ProcessPointerDown(pt);
-                    m_HighLightManager.ProcessPointerDown(pt);
-                }
-                else
-                {
-                    // Pass the pointer information to the InkManager. 
-                    CurrentManagerFrame.ProcessPointerDown(pt);
-                }
-
-                m_PenId = pt.PointerId;
-
                 e.Handled = true;
             }
 
@@ -1121,19 +991,13 @@ namespace QuickAnimator
 
         private void NewFrame(object sender, RoutedEventArgs e)
         {
-            if (m_InkManager.GetStrokes().Count > 0)
-            {
-                RenderStrokesFrame(CurrentManager,_mCurrentCanvasFrame);
-            }
 
-            //FramesContainer.Children.Add(_mCurrentCanvasFrame);
             _frames += 1;
             _framesArray.Add(_frames, new InkManager());
             InkManager newCurrentManager;
             _framesArray.TryGetValue(_frames, out newCurrentManager);
             CurrentManager = newCurrentManager;
             RefreshCanvas();
-
             var newCanvas = new Canvas
             {
                 Name = "frame" + _frames,
@@ -1143,10 +1007,19 @@ namespace QuickAnimator
                 Background = new SolidColorBrush(Colors.White)
             };
 
+            var idframe = new TextBox
+                {
+                    Text = _frames.ToString(),
+                    MaxWidth = 2,
+                    FontSize = 40,
+                    Foreground = new SolidColorBrush(Colors.Black),
+                    IsReadOnly = true
+                };
+
+            newCanvas.Children.Add(idframe);
             _mCurrentCanvasFrame = newCanvas;
             FramesContainer.Children.Add(_mCurrentCanvasFrame);
-
-            m_IsRecognizing = true;
+            scroll1.ScrollToHorizontalOffset(MaxWidth);
         }
     }
 }
