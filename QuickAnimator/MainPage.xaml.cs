@@ -401,7 +401,22 @@ namespace QuickAnimator
                 pathFigure.Segments.Add(b);
             }
 
-            path.StrokeThickness = 1;
+            
+            switch ((int)width)
+            {
+                case 2:
+                    path.StrokeThickness = 1;
+                    break;
+                case 4:
+                    path.StrokeThickness = 2;
+                    break;
+                case 10:
+                    path.StrokeThickness = 4;
+                    break;
+                default:
+                    path.StrokeThickness = 1;
+                    break;
+            }
             path.Stroke = new SolidColorBrush(color);
 
             path.Opacity = opacity;
@@ -853,45 +868,39 @@ namespace QuickAnimator
             {
 
                 m_CurrentDrawingColor = Colors.Black;
-                //var menu = new PopupMenu();
-                //menu.Commands.Add(new UICommand("Small", null, 0));
+                var menu = new PopupMenu();
+                menu.Commands.Add(new UICommand("Pequeño", null, 0));
                 ////menu.Commands.Add(new UICommand("Small", null, 1));
                 ////menu.Commands.Add(new UICommandSeparator());
-                //menu.Commands.Add(new UICommand("Medium", null, 2));
+                menu.Commands.Add(new UICommand("Mediano", null, 2));
                 ////menu.Commands.Add(new UICommandSeparator());
                 ////menu.Commands.Add(new UICommand("Large", null, 3));
-                //menu.Commands.Add(new UICommand("Large", null, 4));
+                menu.Commands.Add(new UICommand("Grande", null, 4));
 
                 //System.Diagnostics.Debug.WriteLine("Context Menu is opening");
 
-                //var chosenCommand = await menu.ShowForSelectionAsync(GetElementRect((FrameworkElement)sender));
+                var chosenCommand = await menu.ShowForSelectionAsync(GetElementRect((FrameworkElement)sender));
 
-                //if (chosenCommand != null)
-                //{
-                //switch ((int)chosenCommand.Id)
-                //{
-                //case 0:
-                //m_CurrentDrawingSize = 2;
-                //Window.Current.CoreWindow.PointerCursor = new CoreCursor(CoreCursorType.Custom, 103);
-                //break;
-                //case 1:
-                //m_CurrentDrawingSize = 4;
-                //break;
-                //case 2:
-                m_CurrentDrawingSize = 4;
-                Window.Current.CoreWindow.PointerCursor = new CoreCursor(CoreCursorType.Custom, 102);
-                //break;
-                //case 3:
-                //    m_CurrentDrawingSize = 8;
-                //    break;
-                //case 4:
-                //    m_CurrentDrawingSize = 10;
-                //    Window.Current.CoreWindow.PointerCursor = new CoreCursor(CoreCursorType.Custom, 101);
-                //    break;
-                //}
+                if (chosenCommand != null)
+                {
+                    switch ((int)chosenCommand.Id)
+                    {
+                        case 0:
+                            m_CurrentDrawingSize = 2;
+                            Window.Current.CoreWindow.PointerCursor = new CoreCursor(CoreCursorType.Custom, 103);
+                            break;
+                        case 2:
+                        m_CurrentDrawingSize = 4;
+                            Window.Current.CoreWindow.PointerCursor = new CoreCursor(CoreCursorType.Custom, 102);
+                            break;
+                        case 4:
+                            m_CurrentDrawingSize = 10;
+                            Window.Current.CoreWindow.PointerCursor = new CoreCursor(CoreCursorType.Custom, 101);
+                            break;
+                    }
 
-                InkMode();
-                //}
+                    InkMode();
+                }
             }
             catch (Exception ex)
             {
@@ -905,13 +914,13 @@ namespace QuickAnimator
             {
                 m_CurrentDrawingColor = Colors.White;
                 var menu = new PopupMenu();
-                menu.Commands.Add(new UICommand("Smallest", null, 0));
+                menu.Commands.Add(new UICommand("Pequeño", null, 0));
                 //menu.Commands.Add(new UICommand("Small", null, 1));
                 ////menu.Commands.Add(new UICommandSeparator());
                 //menu.Commands.Add(new UICommand("Medium", null, 2));
                 ////menu.Commands.Add(new UICommandSeparator());
                 //menu.Commands.Add(new UICommand("Large", null, 3));
-                menu.Commands.Add(new UICommand("Largest", null, 4));
+                menu.Commands.Add(new UICommand("Grande", null, 4));
 
                 System.Diagnostics.Debug.WriteLine("Context Menu is opening");
 
@@ -923,6 +932,7 @@ namespace QuickAnimator
                     {
                         case 0:
                             m_CurrentDrawingSize = 10;
+                            Window.Current.CoreWindow.PointerCursor = new CoreCursor(CoreCursorType.Custom, 104);
                             break;
                         case 1:
                             m_CurrentDrawingSize = 4;
@@ -934,6 +944,7 @@ namespace QuickAnimator
                             m_CurrentDrawingSize = 8;
                             break;
                         case 4:
+                            Window.Current.CoreWindow.PointerCursor = new CoreCursor(CoreCursorType.Custom, 105);
                             m_CurrentDrawingSize = 40;
                             break;
                     }
@@ -954,21 +965,37 @@ namespace QuickAnimator
 
         private void InkCanvas_OnPointerMoved(object sender, PointerRoutedEventArgs e)
         {
-            switch ((int)m_CurrentDrawingSize)
+            if (m_CurrentDrawingColor == Colors.White)
             {
-                case 2:
-                    Window.Current.CoreWindow.PointerCursor = new CoreCursor(CoreCursorType.Custom, 103);
-                    break;
-                case 4:
-                    Window.Current.CoreWindow.PointerCursor = new CoreCursor(CoreCursorType.Custom, 102);
-                    break;
-                case 10:
-                    Window.Current.CoreWindow.PointerCursor = new CoreCursor(CoreCursorType.Custom, 101);
-                    break;
-                default:
-                    Window.Current.CoreWindow.PointerCursor = new CoreCursor(CoreCursorType.Arrow, 101);
-                    break;
+                switch ((int)m_CurrentDrawingSize)
+                {
+                    case 10:
+                        Window.Current.CoreWindow.PointerCursor = new CoreCursor(CoreCursorType.Custom, 104);
+                        break;
+                    default:
+                        Window.Current.CoreWindow.PointerCursor = new CoreCursor(CoreCursorType.Custom, 105);
+                        break;
+                }   
             }
+            else
+            {
+                switch ((int)m_CurrentDrawingSize)
+                {
+                    case 2:
+                        Window.Current.CoreWindow.PointerCursor = new CoreCursor(CoreCursorType.Custom, 103);
+                        break;
+                    case 4:
+                        Window.Current.CoreWindow.PointerCursor = new CoreCursor(CoreCursorType.Custom, 102);
+                        break;
+                    case 10:
+                        Window.Current.CoreWindow.PointerCursor = new CoreCursor(CoreCursorType.Custom, 101);
+                        break;
+                    default:
+                        Window.Current.CoreWindow.PointerCursor = new CoreCursor(CoreCursorType.Arrow, 101);
+                        break;
+                }
+            }
+            
         }
 
         private void NewProject(object sender, RoutedEventArgs e)
@@ -1017,6 +1044,42 @@ namespace QuickAnimator
                 };
 
             newCanvas.Children.Add(idframe);
+            _mCurrentCanvasFrame = newCanvas;
+            FramesContainer.Children.Add(_mCurrentCanvasFrame);
+            scroll1.ScrollToHorizontalOffset(MaxWidth);
+        }
+
+        private void DuplicateFrame(object sender, RoutedEventArgs e)
+        {
+            _frames += 1;
+            _framesArray.Add(_frames, new InkManager());
+
+            //InkManager newCurrentManager;
+            //_framesArray.TryGetValue(_frames, out newCurrentManager);
+            ////CurrentManager = newCurrentManager;
+            //RefreshCanvas();
+            var newCanvas = new Canvas
+            {
+                Name = "frame" + _frames,
+                Height = 120,
+                Width = 200,
+                Margin = new Thickness(10),
+                Background = new SolidColorBrush(Colors.White)
+            };
+
+            
+
+            var idframe = new TextBox
+            {
+                Text = _frames.ToString(),
+                MaxWidth = 2,
+                FontSize = 40,
+                Foreground = new SolidColorBrush(Colors.Black),
+                IsReadOnly = true
+            };
+
+            newCanvas.Children.Add(idframe);
+            RenderStrokesFrame(CurrentManager, newCanvas);
             _mCurrentCanvasFrame = newCanvas;
             FramesContainer.Children.Add(_mCurrentCanvasFrame);
             scroll1.ScrollToHorizontalOffset(MaxWidth);
