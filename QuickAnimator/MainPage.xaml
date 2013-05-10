@@ -24,6 +24,11 @@
                             Visibility="Visible"
                             Style="{StaticResource NewAppBarButtonStyle}" RenderTransformOrigin="0.5,0.5">
                     </Button>
+                    <Button x:Name="Open" AutomationProperties.Name="Abrir Animación" Grid.Column="1" Margin="10"
+                            Click="OpenProject"
+                            Visibility="Visible"
+                            Style="{StaticResource OpenAppBarButtonStyle}" RenderTransformOrigin="0.5,0.5">
+                    </Button>
                     <Button x:Name="Lapiz" AutomationProperties.Name="Dibujar" Grid.Column="1" Margin="10"
                             Click="SelectSize"
                             Visibility="Collapsed"
@@ -41,9 +46,19 @@
                             Style="{StaticResource SelectAllAppBarButtonStyle}"/>
                     <Button x:Name="BorrarTodo" AutomationProperties.Name="Limpiar" Grid.Column="3" Margin ="10"
                             Click="Clear"
-                            IsEnabled="False"
+                            IsEnabled="True"
                             Visibility="Collapsed"
                             Style="{StaticResource ClearAllAppBarButtonStyle}"/>
+                    <Button x:Name="Salvar" AutomationProperties.Name="Salvar Animación" Grid.Column="3" Margin ="10"
+                            Click="SalvarAnimacion"
+                            IsEnabled="True"
+                            Visibility="Collapsed"
+                            Style="{StaticResource SalvarAppBarButtonStyle}"/>
+                    <Button x:Name="Reproducir" AutomationProperties.Name="Reproducir Animación" Grid.Column="3" Margin ="10"
+                            Click="ReproducirFrame"
+                            IsEnabled="True"
+                            Visibility="Collapsed"
+                            Style="{StaticResource PlayAllAppBarButtonStyle}"/>
                     
                 </StackPanel>
             </Grid>

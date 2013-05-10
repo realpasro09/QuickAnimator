@@ -24,33 +24,48 @@
                             Visibility="Visible"
                             Style="{StaticResource NewAppBarButtonStyle}" RenderTransformOrigin="0.5,0.5">
                     </Button>
-                    <Button x:ConnectionId='4' x:Name="Lapiz" AutomationProperties.Name="Dibujar" Grid.Column="1" Margin="10"
+                    <Button x:ConnectionId='4' x:Name="Open" AutomationProperties.Name="Abrir Animación" Grid.Column="1" Margin="10"
+                                               
+                            Visibility="Visible"
+                            Style="{StaticResource OpenAppBarButtonStyle}" RenderTransformOrigin="0.5,0.5">
+                    </Button>
+                    <Button x:ConnectionId='5' x:Name="Lapiz" AutomationProperties.Name="Dibujar" Grid.Column="1" Margin="10"
                                               
                             Visibility="Collapsed"
                             Style="{StaticResource EditAppBarButtonStyle}" RenderTransformOrigin="0.5,0.5">                 
                     </Button>
-                    <Button x:ConnectionId='5' x:Name="Borrador" AutomationProperties.Name="Borrar" Grid.Column="2" Margin="10" 
+                    <Button x:ConnectionId='6' x:Name="Borrador" AutomationProperties.Name="Borrar" Grid.Column="2" Margin="10" 
                                                     
                             IsEnabled="True"
                             Visibility="Collapsed"
                             Style="{StaticResource TrimAppBarButtonStyle}"/>
-                    <Button x:ConnectionId='6' x:Name="Seleccion" AutomationProperties.Name="Select" Grid.Column="3" Margin ="10"
+                    <Button x:ConnectionId='7' x:Name="Seleccion" AutomationProperties.Name="Select" Grid.Column="3" Margin ="10"
                                           
                             IsEnabled="False"
                             Visibility="Collapsed"
                             Style="{StaticResource SelectAllAppBarButtonStyle}"/>
-                    <Button x:ConnectionId='7' x:Name="BorrarTodo" AutomationProperties.Name="Limpiar" Grid.Column="3" Margin ="10"
+                    <Button x:ConnectionId='8' x:Name="BorrarTodo" AutomationProperties.Name="Limpiar" Grid.Column="3" Margin ="10"
                                          
-                            IsEnabled="False"
+                            IsEnabled="True"
                             Visibility="Collapsed"
                             Style="{StaticResource ClearAllAppBarButtonStyle}"/>
+                    <Button x:ConnectionId='9' x:Name="Salvar" AutomationProperties.Name="Salvar Animación" Grid.Column="3" Margin ="10"
+                                                   
+                            IsEnabled="True"
+                            Visibility="Collapsed"
+                            Style="{StaticResource SalvarAppBarButtonStyle}"/>
+                    <Button x:ConnectionId='10' x:Name="Reproducir" AutomationProperties.Name="Reproducir Animación" Grid.Column="3" Margin ="10"
+                                                   
+                            IsEnabled="True"
+                            Visibility="Collapsed"
+                            Style="{StaticResource PlayAllAppBarButtonStyle}"/>
                     
                 </StackPanel>
             </Grid>
         </AppBar>
     </Page.TopAppBar>
     <Page.BottomAppBar>
-        <AppBar x:ConnectionId='8' x:Name="BottomToolbar" Visibility="Collapsed"                                            >
+        <AppBar x:ConnectionId='11' x:Name="BottomToolbar" Visibility="Collapsed"                                            >
             <Grid >
                 <Grid.ColumnDefinitions>
 
@@ -64,12 +79,12 @@
                 </StackPanel>
                 </ScrollViewer>
                 <StackPanel Orientation="Vertical" Grid.Column="1">
-                    <Button x:ConnectionId='9' x:Name="NuevoFrame" Grid.Column="1" 
+                    <Button x:ConnectionId='12' x:Name="NuevoFrame" Grid.Column="1" 
                                                     
                             Style="{StaticResource NewFrameAppBarButtonStyle}"
                                     RenderTransformOrigin="0.5,0.5">
                     </Button>
-                    <Button x:ConnectionId='10' x:Name="DuplicarFrame" Grid.Column="1" 
+                    <Button x:ConnectionId='13' x:Name="DuplicarFrame" Grid.Column="1" 
                                                           
                             Style="{StaticResource DuplicateAppBarButtonStyle}"
                                     RenderTransformOrigin="0.5,0.5">

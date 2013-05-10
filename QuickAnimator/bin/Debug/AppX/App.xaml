@@ -15,6 +15,11 @@
                 <Setter Property="AutomationProperties.Name" Value="Nuevo Frame"/>
                 <Setter Property="Content" Value="&#xE0C5;"/>
             </Style>
+            <Style x:Key="OpenAppBarButtonStyle" TargetType="Button" BasedOn="{StaticResource AppBarButtonStyle}">
+                <Setter Property="AutomationProperties.AutomationId" Value="NewFrameAppBarButton"/>
+                <Setter Property="AutomationProperties.Name" Value="Nuevo Frame"/>
+                <Setter Property="Content" Value="&#xE19C;"/>
+            </Style>
             <Style x:Key="DuplicateAppBarButtonStyle" TargetType="Button" BasedOn="{StaticResource AppBarButtonStyle}">
                 <Setter Property="AutomationProperties.AutomationId" Value="DuplicateAppBarButton"/>
                 <Setter Property="AutomationProperties.Name" Value="Duplicar Frame"/>
@@ -44,6 +49,16 @@
                 <Setter Property="AutomationProperties.AutomationId" Value="SelectAllAppBarButton"/>
                 <Setter Property="AutomationProperties.Name" Value="Select All"/>
                 <Setter Property="Content" Value="&#xE160;"/>
+            </Style>
+            <Style x:Key="PlayAllAppBarButtonStyle" TargetType="Button" BasedOn="{StaticResource AppBarButtonStyle}">
+                <Setter Property="AutomationProperties.AutomationId" Value="SelectAllAppBarButton"/>
+                <Setter Property="AutomationProperties.Name" Value="Select All"/>
+                <Setter Property="Content" Value="&#x25B7;"/>
+            </Style>
+            <Style x:Key="SalvarAppBarButtonStyle" TargetType="Button" BasedOn="{StaticResource AppBarButtonStyle}">
+                <Setter Property="AutomationProperties.AutomationId" Value="SelectAllAppBarButton"/>
+                <Setter Property="AutomationProperties.Name" Value="Select All"/>
+                <Setter Property="Content" Value="&#xE105;"/>
             </Style>
         </ResourceDictionary>
     </Application.Resources>
