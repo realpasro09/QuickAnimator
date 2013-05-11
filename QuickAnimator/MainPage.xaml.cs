@@ -1226,6 +1226,7 @@ namespace QuickAnimator
             _mycontroltimer.Interval = new TimeSpan(0, 0, 0, 1,500);
             _mycontroltimer.Start();
             //small change
+            //change 2
       }
 
 #endregion

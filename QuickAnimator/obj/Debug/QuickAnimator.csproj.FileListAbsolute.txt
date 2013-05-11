@@ -48,5 +48,3 @@ C:\Users\Rene\QuickAnimator\QuickAnimator\obj\Debug\priconfig.xml.intermediate
 C:\Users\Rene\QuickAnimator\QuickAnimator\obj\Debug\layout.resfiles.intermediate
 C:\Users\Rene\QuickAnimator\QuickAnimator\obj\Debug\resources.resfiles.intermediate
 C:\Users\Rene\QuickAnimator\QuickAnimator\obj\Debug\pri.resfiles.intermediate
-C:\Users\Rene\QuickAnimator\QuickAnimator\obj\Debug\_pkginfo.txt
-C:\Users\Rene\QuickAnimator\QuickAnimator\obj\Debug\Stripped\QuickAnimator.pdb
