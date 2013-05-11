@@ -1,4 +1,5 @@
 Assets\Logo.png
+Assets\PleaseWaitScreen.gif
 Assets\QuickAnimatorInit.jpg
 Assets\SmallLogo.png
 Assets\SplashScreen.png
@@ -7,4 +8,5 @@ Assets\ToolboxIcons\cancel-48.png
 Assets\ToolboxIcons\edit-48.png
 App.xaml
 Common\StandardStyles.xaml
+ExtendedSplash.xaml
 MainPage.xaml

@@ -112,9 +112,11 @@ namespace QuickAnimator.QuickAnimator_XamlTypeInfo
             }
         }
 
-        private object Activate_0_MainPage() { return new global::QuickAnimator.MainPage(); }
+        private object Activate_0_ExtendedSplash() { return new global::QuickAnimator.ExtendedSplash(); }
 
-        private object Activate_1_InkManager() { return new global::Windows.UI.Input.Inking.InkManager(); }
+        private object Activate_1_MainPage() { return new global::QuickAnimator.MainPage(); }
+
+        private object Activate_2_InkManager() { return new global::Windows.UI.Input.Inking.InkManager(); }
 
 
         private global::Windows.UI.Xaml.Markup.IXamlType CreateXamlType(string typeName)
@@ -136,9 +138,15 @@ namespace QuickAnimator.QuickAnimator_XamlTypeInfo
                 xamlType = new global::QuickAnimator.QuickAnimator_XamlTypeInfo.XamlSystemBaseType(typeName, typeof(global::System.Object));
                 break;
 
+            case "QuickAnimator.ExtendedSplash":
+                userType = new global::QuickAnimator.QuickAnimator_XamlTypeInfo.XamlUserType(this, typeName, typeof(global::QuickAnimator.ExtendedSplash), GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
+                userType.Activator = Activate_0_ExtendedSplash;
+                xamlType = userType;
+                break;
+
             case "QuickAnimator.MainPage":
                 userType = new global::QuickAnimator.QuickAnimator_XamlTypeInfo.XamlUserType(this, typeName, typeof(global::QuickAnimator.MainPage), GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
-                userType.Activator = Activate_0_MainPage;
+                userType.Activator = Activate_1_MainPage;
                 userType.AddMemberName("CurrentManager");
                 userType.AddMemberName("CurrentManagerFrame");
                 xamlType = userType;
@@ -146,7 +154,7 @@ namespace QuickAnimator.QuickAnimator_XamlTypeInfo
 
             case "Windows.UI.Input.Inking.InkManager":
                 userType = new global::QuickAnimator.QuickAnimator_XamlTypeInfo.XamlUserType(this, typeName, typeof(global::Windows.UI.Input.Inking.InkManager), GetXamlTypeByName("Object"));
-                userType.Activator = Activate_1_InkManager;
+                userType.Activator = Activate_2_InkManager;
                 xamlType = userType;
                 break;
 

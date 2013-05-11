@@ -8,6 +8,7 @@
     mc:Ignorable="d" d:DataContext="{d:DesignData }">
 
     <Grid Background="White">
+        <Image Name="waitScreen" HorizontalAlignment="Center" Stretch="Uniform" Source="Assets/PleaseWaitScreen.gif" Width="1500"  VerticalAlignment="Center" Visibility="Collapsed"/>
         <Image Name="logo" HorizontalAlignment="Center" Stretch="Uniform" Source="Assets/QuickAnimatorInit.jpg" Width="1500"  VerticalAlignment="Center" Visibility="Visible"/>
         <Canvas Name="InkCanvas" Background="White" Margin="0,0,0,0" PointerMoved="InkCanvas_OnPointerMoved" Visibility="Collapsed"/>
         <Image Name="image" HorizontalAlignment="Left" Height="230.5" Margin="1080,214.5,0,0" VerticalAlignment="Top" Width="261" Visibility="Collapsed"/>

@@ -41,6 +41,9 @@
     <AppxPackagedFile Include="C:\Users\Rene\QuickAnimator\QuickAnimator\Assets\ToolboxIcons\edit-48.png">
       <PackagePath>Assets\ToolboxIcons\edit-48.png</PackagePath>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Rene\QuickAnimator\QuickAnimator\Assets\PleaseWaitScreen.gif">
+      <PackagePath>Assets\PleaseWaitScreen.gif</PackagePath>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Rene\QuickAnimator\QuickAnimator\Assets\QuickAnimatorInit.jpg">
       <PackagePath>Assets\QuickAnimatorInit.jpg</PackagePath>
     </AppxPackagedFile>
@@ -49,6 +52,9 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Rene\QuickAnimator\QuickAnimator\bin\Debug\Common\StandardStyles.xaml">
       <PackagePath>Common\StandardStyles.xaml</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Rene\QuickAnimator\QuickAnimator\bin\Debug\ExtendedSplash.xaml">
+      <PackagePath>ExtendedSplash.xaml</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Rene\QuickAnimator\QuickAnimator\bin\Debug\MainPage.xaml">
       <PackagePath>MainPage.xaml</PackagePath>

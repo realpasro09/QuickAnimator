@@ -90,7 +90,8 @@ namespace QuickAnimator
             InkCanvas.PointerMoved += new PointerEventHandler(OnCanvasPointerMoved);
             InkCanvas.PointerReleased += new PointerEventHandler(OnCanvasPointerReleased);
             InkCanvas.PointerExited += new PointerEventHandler(OnCanvasPointerReleased);
-
+            _timer.Tick += DispatcherTimerEventHandler;
+            _timer.Interval = new TimeSpan(0, 0, 0, 1);
         }
 
         #region Pointer Event Handlers
@@ -299,20 +300,11 @@ namespace QuickAnimator
 
         #region Rendering Functions
 
-        private async void RestoreData(InkManager current)
+        private async Task RestoreData(InkManager current)
         {
-            if (m_InkManager.GetStrokes().Count > 0)
+            if (current.GetStrokes().Count > 0)
             {
-                var newCanvas = NewCanvas();
-
-                newCanvas.Children.Add(FrameId(_frames));
-                RenderStrokesFrame(CurrentManager, newCanvas);
-                _mCurrentCanvasFrame = newCanvas;
-                FramesContainer.Children.Add(_mCurrentCanvasFrame);
-                _smallFrameContainer.Add(_frames, _mCurrentCanvasFrame);
-                scroll1.ScrollToHorizontalOffset(MaxWidth);
-                _selectedFrame = _frames;
-                InkMode();
+                
 
                 var strokesFromLastCurrentManager = CurrentManager.GetStrokes();
                 var newCurrentManager = new InkManager();
@@ -323,19 +315,36 @@ namespace QuickAnimator
 
                 var uniqueFrame = new FramesCollection() { Key = _frames, Manager = newCurrentManager };
                 _framesArray.Add(uniqueFrame);
-                _frames = _frames + 1;
+                
 
                 RefreshCanvas();
+
+                var newCanvas = NewCanvas();
+
+                newCanvas.Children.Add(FrameId(_frames));
+                RenderStrokesFrame(CurrentManager, newCanvas);
+                _mCurrentCanvasFrame = newCanvas;
+                FramesContainer.Children.Add(_mCurrentCanvasFrame);
+                _smallFrameContainer.Add(_frames, _mCurrentCanvasFrame);
+                scroll1.ScrollToHorizontalOffset(MaxWidth);
+                _selectedFrame = _frames;
+                InkMode();
+                _frames = _frames + 1;
             }
         }
-        private async void ReadInk(StorageFile storageFile)
+        private async Task ReadInk(StorageFile storageFile)
         {
             if (storageFile != null)
             {
                 using (var stream = await storageFile.OpenAsync(Windows.Storage.FileAccessMode.Read))
                 {
-                    m_InkManager = new InkManager();
-                    m_InkManager.LoadAsync(stream).Completed = (s,a) => RestoreData(m_InkManager);
+                    await m_InkManager.LoadAsync(stream);
+                    var manager = new InkManager();
+                    foreach (var strokes in m_InkManager.GetStrokes())
+                    {
+                        manager.AddStroke(strokes.Clone());
+                    }
+                    await RestoreData(manager);
                 }
             }
         }
@@ -468,18 +477,48 @@ namespace QuickAnimator
 
         #region Additional Commands
 
-        private async void Load(object sender, RoutedEventArgs e)
+        private async Task Load(object sender, RoutedEventArgs e)
         {
-            try
+            
+            _openProject = new FileOpenPicker();
+            _openProject.SuggestedStartLocation = PickerLocationId.Desktop;
+            _openProject.FileTypeFilter.Add(".xml");
+            _projectfile = await _openProject.PickSingleFileAsync();
+            if (_projectfile != null)
             {
-                var savedimage =
-                await ApplicationData.Current.LocalFolder.GetFileAsync(_projectfile.DisplayName + "_" + _currentOpenFrame +".png");
-                ReadInk(savedimage);
+                const int cantframes = 100;
+                var fileOpened = _projectfile;
+                for (var frameToOpen = 1; frameToOpen < cantframes; frameToOpen++)
+                {
+                    try
+                    {
+                        var frame = await ApplicationData.Current.LocalFolder.GetFileAsync(fileOpened.DisplayName + "_" + frameToOpen + ".png");
+                        await ReadInk(frame);
+
+                    }
+                    catch (Exception)
+                    { break; }
+                }
+                _frames = _frames - 1;
+                newCanvas_PointerReleased(new Canvas { Name = "1" }, null);
+                newCanvas_PointerReleased(new Canvas { Name = _frames.ToString() }, null);
             }
-            catch (Exception exception)
+            else
             {
-                _loadterminado = true;
+                New.Visibility = Visibility.Visible;
+                Open.Visibility = Visibility.Visible;
+                Lapiz.Visibility = Visibility.Collapsed;
+                Borrador.Visibility = Visibility.Collapsed;
+                Seleccion.Visibility = Visibility.Collapsed;
+                BorrarTodo.Visibility = Visibility.Collapsed;
+                logo.Visibility = Visibility.Visible;
+                InkCanvas.Visibility = Visibility.Collapsed;
+                image.Visibility = Visibility.Collapsed;
+                BottomToolbar.Visibility = Visibility.Collapsed;
+                Reproducir.Visibility = Visibility.Collapsed;
+                Salvar.Visibility = Visibility.Collapsed;
             }
+            
         }
 
         #region Quick Commands
@@ -902,7 +941,6 @@ namespace QuickAnimator
                 ////menu.Commands.Add(new UICommandSeparator());
                 //menu.Commands.Add(new UICommand("Large", null, 3));
                 menu.Commands.Add(new UICommand("Grande", null, 4));
-                menu.Commands.Add(new UICommand("Lienzo", null, 6));
 
                 System.Diagnostics.Debug.WriteLine("Context Menu is opening");
 
@@ -1139,6 +1177,16 @@ namespace QuickAnimator
             Window.Current.CoreWindow.PointerCursor = new CoreCursor(CoreCursorType.Hand, 101);
         }
 
+        
+
+        private void SalvarAnimacion(object sender, RoutedEventArgs e)
+        {
+            Save(sender, e);
+        }
+
+        
+
+#endregion
         private void ReproducirFrame(object sender, RoutedEventArgs e)
         {
             var existeFrame = _framesArray.Any(framesCollection => framesCollection.Key == _frames);
@@ -1152,13 +1200,11 @@ namespace QuickAnimator
             var canvasTemp = InkCanvas;
             InkCanvas.Children.Clear();
             _selectedFrame = 1;
+
             
-            _timer.Tick += DispatcherTimerEventHandler;
-            _timer.Interval = new TimeSpan(0, 0, 0, 1);
             _timer.Start();
         }
-
-        private void DispatcherTimerEventHandler(object sender, object e)
+        private async void DispatcherTimerEventHandler(object sender, object e)
         {
             if (_selectedFrame > _frames)
             {
@@ -1167,38 +1213,24 @@ namespace QuickAnimator
                 BottomToolbar.IsOpen = true;
                 _selectedFrame = _frames;
                 scroll1.ScrollToHorizontalOffset(MaxWidth);
-                foreach (var frame in _framesArray.Where(frame => frame.Key == _frames))
-                {
-                    var strokesFromLastCurrentManager = frame.Manager.GetStrokes();
-                    InkCanvas.Children.Clear();
-                    CurrentManager = new InkManager();
-                    foreach (var stroke in strokesFromLastCurrentManager)
-                    {
-                        CurrentManager.AddStroke(stroke.Clone());
-                    }
-                    RefreshCanvas();
-                }
+                newCanvas_PointerReleased(new Canvas(){Name = _frames.ToString()},null);
                 return;
             }
-            InkCanvas.Children.Clear();
-            foreach (var frame in _framesArray.Where(frame => frame.Key == _selectedFrame))
-            {
-                var strokesFromLastCurrentManager = frame.Manager.GetStrokes();
-                InkCanvas.Children.Clear();
-                CurrentManager = new InkManager();
-                foreach (var stroke in strokesFromLastCurrentManager)
-                {
-                    CurrentManager.AddStroke(stroke.Clone());
-                }
-                RefreshCanvas();
-            }
-
+            var frame = _framesArray.First(x => x.Key == _selectedFrame);
+            await DrawFrame(frame);
             _selectedFrame = _selectedFrame + 1;
         }
 
-        private void SalvarAnimacion(object sender, RoutedEventArgs e)
+        private async Task DrawFrame(FramesCollection frame)
         {
-            Save(sender, e);
+            InkCanvas.Children.Clear();
+            var strokesFromLastCurrentManager = frame.Manager.GetStrokes();
+            CurrentManager = new InkManager();
+            foreach (var stroke in strokesFromLastCurrentManager)
+            {
+                CurrentManager.AddStroke(stroke.Clone());
+            }
+            RefreshCanvas();
         }
 
         private async void OpenProject(object sender, RoutedEventArgs e)
@@ -1216,27 +1248,19 @@ namespace QuickAnimator
             Reproducir.Visibility = Visibility.Visible;
             Salvar.Visibility = Visibility.Visible;
 
-            _openProject = new Windows.Storage.Pickers.FileOpenPicker();
-            _openProject.SuggestedStartLocation = Windows.Storage.Pickers.PickerLocationId.Desktop;
-            _openProject.FileTypeFilter.Add(".xml");
-            _projectfile = await _openProject.PickSingleFileAsync();
+            
             //var animatorSaveClass = await ReadXml<AnimatorSave>(projectfile);
-
-            _mycontroltimer.Tick += DispatcherTimerEventHandler2;
-            _mycontroltimer.Interval = new TimeSpan(0, 0, 0, 1,500);
-            _mycontroltimer.Start();
-            //small change
-            //change 2
-      }
-
-#endregion
-
+            
+            await Load(sender, new RoutedEventArgs());
+            BottomToolbar.IsOpen = true;
+            Toolbox.IsOpen = true;
+        }
         private void DispatcherTimerEventHandler2(object sender, object e)
         {
             if (!_loadterminado)
             {
                 _currentOpenFrame = _currentOpenFrame + 1;
-                Load(sender, new RoutedEventArgs());
+                
             }
             else
             {

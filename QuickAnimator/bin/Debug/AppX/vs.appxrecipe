@@ -16,17 +16,17 @@
     <AppXManifest Include="C:\Users\Rene\QuickAnimator\QuickAnimator\bin\Debug\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2013-05-10T04:50:29.542</Modified>
+      <Modified>2013-05-11T18:06:24.425</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="C:\Users\Rene\QuickAnimator\QuickAnimator\bin\Debug\QuickAnimator.exe">
       <PackagePath>QuickAnimator.exe</PackagePath>
-      <Modified>2013-05-10T22:55:12.704</Modified>
+      <Modified>2013-05-11T18:21:05.172</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Rene\QuickAnimator\QuickAnimator\bin\Debug\QuickAnimator.pdb">
       <PackagePath>QuickAnimator.pdb</PackagePath>
-      <Modified>2013-05-10T22:55:12.688</Modified>
+      <Modified>2013-05-11T18:21:05.162</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Rene\QuickAnimator\QuickAnimator\Assets\Logo.png">
       <PackagePath>Assets\Logo.png</PackagePath>
@@ -41,7 +41,7 @@
     <AppxPackagedFile Include="C:\Users\Rene\QuickAnimator\QuickAnimator\Assets\SplashScreen.png">
       <PackagePath>Assets\SplashScreen.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2012-03-16T02:42:52.000</Modified>
+      <Modified>2013-05-11T18:14:24.358</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Rene\QuickAnimator\QuickAnimator\Assets\StoreLogo.png">
       <PackagePath>Assets\StoreLogo.png</PackagePath>
@@ -56,6 +56,10 @@
       <PackagePath>Assets\ToolboxIcons\edit-48.png</PackagePath>
       <Modified>2013-04-17T16:42:56.367</Modified>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Rene\QuickAnimator\QuickAnimator\Assets\PleaseWaitScreen.gif">
+      <PackagePath>Assets\PleaseWaitScreen.gif</PackagePath>
+      <Modified>2013-05-11T15:47:49.344</Modified>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Rene\QuickAnimator\QuickAnimator\Assets\QuickAnimatorInit.jpg">
       <PackagePath>Assets\QuickAnimatorInit.jpg</PackagePath>
       <Modified>2013-04-26T03:26:48.872</Modified>
@@ -68,13 +72,17 @@
       <PackagePath>Common\StandardStyles.xaml</PackagePath>
       <Modified>2013-04-27T05:27:24.483</Modified>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Rene\QuickAnimator\QuickAnimator\bin\Debug\ExtendedSplash.xaml">
+      <PackagePath>ExtendedSplash.xaml</PackagePath>
+      <Modified>2013-05-11T18:01:39.023</Modified>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Rene\QuickAnimator\QuickAnimator\bin\Debug\MainPage.xaml">
       <PackagePath>MainPage.xaml</PackagePath>
-      <Modified>2013-05-10T06:20:43.825</Modified>
+      <Modified>2013-05-11T15:49:36.801</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Rene\QuickAnimator\QuickAnimator\bin\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>
-      <Modified>2013-05-06T19:34:23.414</Modified>
+      <Modified>2013-05-11T18:06:24.272</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>
